@@ -32,8 +32,8 @@ registrarBoton = () => {
 
     }
 
-    votarBoton = () => {
-        let i = IdCandidato.value;
+    votarBoton = () => { //boton de votar segun id
+      /*  let i = IdCandidato.value;
         let u = IdUsuario.value;
 
         if (u !== id){
@@ -45,10 +45,33 @@ registrarBoton = () => {
             alert('ID esta vacio');
             return;
         }
-    
-    }
+    */
+   let idChequada = IdCandidato.value;
+   let votarCandidato = {
+       idVotoCandidato:Math.random(),
+       id:idChequada
+   }
 
-    CandidatosBoton = () => {
+   let votos;
+   database.ref('IdCandidato').on('value',function (data){
+   data.forEach(
+       function (votosCandidatos) {
+           let  numeroVotos= votosCandidatos.val();
+           let  id= numeroVotos.id;
+
+           if ( id === idChequada) {
+           v =voto.v;
+           }
+       }
+   )
+   });
+
+
+}
+
+    
+
+    CandidatosBoton = () => { //ver candidatos
         
         /*let i = IdCandidato.value;
         let n = Nombre.value;
@@ -72,9 +95,8 @@ registrarBoton = () => {
 
     }
 
-    VotacionesBoton = () => {
-        
-    alert('click');
+    VotacionesBoton = () => { //ver los votos
+    
     }
 
     database.ref('users').on('value', function(data){
@@ -82,8 +104,10 @@ registrarBoton = () => {
         data.forEach (
             function(user){
             let = id = user.key;
+            let = IdCandidatos = user.val();
             let = nombreCandidato = user.val();
             console.log(id);
+            console.log(IdCandidatos.IdCandidato);
             console.log(nombreCandidato.Nombre);
             }
         );
