@@ -96,7 +96,22 @@ registrarBoton = () => {
     }
 
     VotacionesBoton = () => { //ver los votos
+        let numeroVotaciones;
+
+        database.ref('users').on('value',function (data){
+            data.forEach(
+                function(A){
+                   let valor = A.val();
+                   let key = A.key;
+                   let  nombreCandidato= valor.Nombre;
+                   database.ref('users').child(key).child('votosVotacion').on('value',function(cantidadVotaciones){
     
+                        
+                   });   
+                }
+            )
+            alert(votacionesPercentage)  
+        })
     }
 
     database.ref('users').on('value', function(data){
